@@ -66,6 +66,9 @@ yarn-error.log
 # testing
 /coverage
 
- .eslintrc.js
-        .prettierrc.js
-        .watchmanconfig
+.eslintrc.js
+.prettierrc.js
+.watchmanconfig
+Gemfile
+README.md
+__tests__/

@@ -14,6 +14,11 @@ class App extends Component {
         <Text>Iniciando o Mines!!</Text>
         <Text>Parametros da grade: {params.getRowsAmount()} x {params.getColumnsAmount()}</Text> 
         <Field/>       
+        <Field opened/>
+        <Field opened nearMines={1}/>
+        <Field mined opened />
+        <Field mined />
+        <Field mined opened exploded />
       </View>
     );
   }

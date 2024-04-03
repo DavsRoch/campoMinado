@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import Field from './src/components/Field';
 import params from './src/params'
+import Flag from './src/components/Flag';
 class App extends Component {
   state = {
     count: 0,
@@ -19,6 +20,7 @@ class App extends Component {
         <Field mined opened />
         <Field mined />
         <Field mined opened exploded />
+        <Field flagged />
       </View>
     );
   }
@@ -27,8 +29,8 @@ class App extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: '#F5FCFF'
   }
 });
 

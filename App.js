@@ -1,26 +1,45 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View, VirtualizedList} from 'react-native';
 import Field from './src/components/Field';
 import params from './src/params'
 import Flag from './src/components/Flag';
+import MineField from './src/components/MineField';
+import { createMinedBoard } from './src/functions';
 class App extends Component {
-  state = {
-    count: 0,
-  };
 
+  constructor (props) {
+    super(props)
+    this.state = this.createState()
+  }
+
+  minesAmount = () => {
+    const cols = params.getColumnsAmount()
+    const rows = params.getRowsAmount()
+    return Math.ceil(cols * rows * params.difficultLevel)
+  }
+
+   createState = () => {
+    const cols = params.getColumnsAmount()
+    const rows = params.getRowsAmount()
+    return {
+      board: createMinedBoard(rows, cols, this.minesAmount)
+    }
+   }
 
   render() {
+    const columns = params.getColumnsAmount()
+    const rows = params.getRowsAmount()
+
+    console.log(rows);
+
+    const board = createMinedBoard(rows, columns, 10)
     return (
       <View style={styles.container}>
-        <Text>Iniciando o Mines!!</Text>
+        <Text style={styles.welcome}>Iniciando o Mines!!</Text>
         <Text>Parametros da grade: {params.getRowsAmount()} x {params.getColumnsAmount()}</Text> 
-        <Field/>       
-        <Field opened/>
-        <Field opened nearMines={1}/>
-        <Field mined opened />
-        <Field mined />
-        <Field mined opened exploded />
-        <Field flagged />
+        <View style={styles.board}>
+          <MineField board={this.state.board}></MineField>
+        </View>
       </View>
     );
   }
@@ -29,8 +48,14 @@ class App extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: 'flex-end'
+  },
+  board: {
     alignItems: 'center',
-    backgroundColor: '#F5FCFF'
+    backgroundColor: '#AAA'
+  },
+  welcome: {
+    alignItems: 'center'
   }
 });
 

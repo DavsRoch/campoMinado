@@ -52,6 +52,8 @@ class App extends Component {
       if(won) {
         Alert.alert('Parabénsss!', 'Você venceu :D')
       }
+
+      this.setState({board, lost, won})
    }
 
   

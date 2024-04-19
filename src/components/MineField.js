@@ -6,6 +6,8 @@ import Field from './Field';
 export default props => {
 
 
+    console.log(props.board);
+
     const rows = props.board.map((row, r) => {
         const columns = row.map((field, i) => {
             return <Field 
